@@ -1,4 +1,4 @@
-"""Requirement check functions for DGIWG STD-DP-19-005 v1.1 (v1.54.1).
+"""Requirement check functions for DGIWG STD-DP-19-005 v1.1 (v1.55).
 
 Contains check_req(), _r1()-_r37(), _manual_checks(),
 run_all_checks(), and the _CHECK_DISPATCH table.
@@ -834,7 +834,8 @@ def _r13(cursor):
                 from pyproj import CRS as _ProjCRS
 
                 # ── v1.47: structural parse via _parse_wkt_structural() ──────
-                _struct_issues, _struct_warns, epsg_crs = _parse_wkt_structural(
+                # v1.55: now returns 4-tuple including math_equiv flag
+                _struct_issues, _struct_warns, epsg_crs, _math_equiv = _parse_wkt_structural(
                     wkt, srs_id, _ProjCRS
                 )
                 issues.extend(_struct_issues)
@@ -844,14 +845,20 @@ def _r13(cursor):
                 if epsg_crs is None:
                     epsg_crs = _ProjCRS.from_epsg(srs_id)
 
-                # ── Original datum name cross-check (v1.27) ────────────────
+                # ── Datum name cross-check (v1.27, refined v1.55) ─────────
+                # v1.55: if pyproj confirmed mathematical equivalence, a datum
+                # *name* difference is purely cosmetic (e.g. "WGS_1984" vs
+                # "World Geodetic System 1984") and is downgraded from FAIL
+                # to a warning.  Only a genuine parameter mismatch (_math_equiv
+                # is False) or a failed parse (_math_equiv is None) keeps the
+                # name check as a hard FAIL.
                 official_datum = epsg_crs.datum.name if epsg_crs.datum else None
                 if official_datum:
                     # Fuzzy compare: normalise whitespace and case
                     def _norm(s):
                         return _re.sub(r'\s+', ' ', s.strip().upper())
                     if _norm(wkt_datum_name) != _norm(official_datum):
-                        # Check for common aliases before failing
+                        # Check for common aliases before deciding severity
                         aliases = {
                             "WORLD GEODETIC SYSTEM 1984": "WGS 84",
                             "WGS 84": "WORLD GEODETIC SYSTEM 1984",
@@ -862,15 +869,28 @@ def _r13(cursor):
                         norm_wkt = _norm(wkt_datum_name)
                         norm_off = _norm(official_datum)
                         alias_of_official = _norm(aliases.get(official_datum.upper(), ""))
-                        if norm_wkt != alias_of_official and norm_off not in norm_wkt and norm_wkt not in norm_off:
-                            issues.append(
-                                f"DATUM name mismatch: WKT has '{wkt_datum_name}' "
-                                f"but EPSG:{srs_id} official datum is '{official_datum}'"
-                            )
-                        else:
+                        is_known_alias = (
+                            norm_wkt == alias_of_official
+                            or norm_off in norm_wkt
+                            or norm_wkt in norm_off
+                        )
+                        if is_known_alias:
                             warnings.append(
                                 f"DATUM '{wkt_datum_name}' is an alias for '{official_datum}' "
                                 f"(EPSG:{srs_id}) ✓"
+                            )
+                        elif _math_equiv:
+                            # CRS parameters are correct — name variation only
+                            warnings.append(
+                                f"DATUM name variation: WKT has '{wkt_datum_name}' vs "
+                                f"EPSG:{srs_id} official '{official_datum}' — "
+                                f"accepted (CRS is mathematically equivalent ✓)"
+                            )
+                        else:
+                            # Parameters also differ (or could not be verified) — hard fail
+                            issues.append(
+                                f"DATUM name mismatch: WKT has '{wkt_datum_name}' "
+                                f"but EPSG:{srs_id} official datum is '{official_datum}'"
                             )
                     else:
                         warnings.append(
@@ -2660,7 +2680,7 @@ def _r25(cursor):
                         _populated = {r[0] for r in cursor.fetchall()}
                         _empty_zooms = sorted(set(_declared) - _populated)
                         if _empty_zooms:
-                            # v1.54: downgraded from FAIL to NOTE — storing data only
+                            # v1.55: downgraded from FAIL to NOTE — storing data only
                             # at the highest zoom level is a standard valid pattern
                             # (DGED elevation files, regional tile pyramids). Req 25
                             # specifies column structure only, not tile population.
@@ -3791,7 +3811,7 @@ def _manual_checks(cursor):
             for cat in cats:
                 if rules.get(cat) == "M":
                     total += 1
-                    # Extension present (exact name match only — v1.54 fix)?
+                    # Extension present (exact name match only — v1.55 fix)?
                     matched = [e for e in registered if e == ext]
                     if matched:
                         # Check table_name is populated for at least one row
@@ -5173,22 +5193,17 @@ def run_all_checks(conn: sqlite3.Connection) -> dict[int, dict[str, object]]:
         _missing_tables = []
         for _t in ("gpkg_metadata", "gpkg_metadata_reference"):
             for _cr in _cascade_fails:
-                _d = results[_cr].get("detail", "")
-                if _t.upper() in _d.upper() and "MISSING" in _d.upper():
+                if _t.upper() in results[_cr].get("detail", "").upper():
                     if _t not in _missing_tables:
                         _missing_tables.append(_t)
                     break
         if _missing_tables:
-            _n = len(_cascade_fails)
-            _tbl_str = " and ".join(_missing_tables)
-            _tbl_word = "table is" if len(_missing_tables) == 1 else "tables are"
-            _fix_word = "this table" if len(_missing_tables) == 1 else "these tables"
+            _tbls = " and ".join(f"'{t}'" for t in _missing_tables)
+            _reqs = ", ".join(f"Req {r}" for r in sorted(_cascade_fails))
             results["__cascade_note__"] = (
-                f"⚠️ ROOT CAUSE: {_n} FAIL result(s) "
-                f"(Req {', '.join(str(r) for r in sorted(_cascade_fails))}) "
-                f"share a single root cause — {_tbl_str} {_tbl_word} missing from "
-                f"this GeoPackage. Creating {_fix_word} and populating them with "
-                f"DGIWG DMF 2.0 compliant metadata will resolve all cascading "
-                f"failures at once."
+                f"The following required table(s) are absent from this GeoPackage: {_tbls}. "
+                f"This single root cause is responsible for the FAIL result on: {_reqs}. "
+                f"Restoring these table(s) will likely resolve all of the above failures."
             )
-    # ── End v1.53 cascade grouping ───────────────────────────────────────────�
+
+    return results

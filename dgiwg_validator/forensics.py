@@ -1,4 +1,4 @@
-"""Source-software forensics and deep-dive checks (v1.54).
+"""Source-software forensics and deep-dive checks (v1.55).
 
 Detects QGIS/GDAL vs ArcGIS authorship, runs per-requirement forensic
 sub-checks, and renders the forensic HTML section.

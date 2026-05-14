@@ -1,4 +1,4 @@
-"""Rollup aggregation + DGIWG_GPKG_FINAL_REPORT.html/.csv (v1.54)."""
+"""Rollup aggregation + DGIWG_GPKG_FINAL_REPORT.html/.csv (v1.55)."""
 import os
 import sys
 import html

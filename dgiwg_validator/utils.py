@@ -1,4 +1,4 @@
-"""Utility helpers for the DGIWG validator (v1.54).
+"""Utility helpers for the DGIWG validator (v1.55).
 
 Library probing, SQLite/GeoPackage helpers, file profile collection,
 result scoring, and the interactive file-picker dialog.
@@ -527,9 +527,10 @@ def _parse_wkt_structural(wkt, srs_id, pyproj_crs_class):
           the caller must call ``pyproj_crs_class.from_epsg(srs_id)``
           directly.
     """
-    issues   = []
-    warnings = []
-    epsg_crs = None
+    issues     = []
+    warnings   = []
+    epsg_crs   = None
+    math_equiv = None   # True / False / None (None = check could not run)
     try:
         wkt_parsed_crs = pyproj_crs_class.from_wkt(wkt)
         epsg_crs       = pyproj_crs_class.from_epsg(srs_id)
@@ -570,13 +571,46 @@ def _parse_wkt_structural(wkt, srs_id, pyproj_crs_class):
         except Exception:
             warnings.append("WKT carries no AUTHORITY/ID — cannot verify code binding")
 
+        # ── Check 4 (v1.55): Mathematical / logical equivalence ───────────────
+        # Compares actual CRS parameters (datum ellipsoid, prime meridian,
+        # projection math) instead of names or string formatting.
+        # "WGS 84", "WGS_1984", "World Geodetic System 1984" all pass here if
+        # the semi-major axis and inverse flattening match EPSG:{srs_id}.
+        try:
+            if wkt_parsed_crs.equals(epsg_crs):
+                math_equiv = True
+                warnings.append(
+                    f"WKT CRS is mathematically equivalent to EPSG:{srs_id} ✓ "
+                    f"(name/format variations are acceptable)"
+                )
+            elif wkt_parsed_crs.equals(epsg_crs, ignore_axis_order=True):
+                # Parameters match but axis order is wrong — already caught by
+                # Check 1/axis-order rule; record equiv=True so datum name
+                # variations are not double-penalised.
+                math_equiv = True
+                issues.append(
+                    f"WKT CRS parameters match EPSG:{srs_id} but axis order "
+                    f"differs — DGIWG Tables 15/16 require Latitude (NORTH) first"
+                )
+            else:
+                math_equiv = False
+                issues.append(
+                    f"WKT CRS is NOT mathematically equivalent to EPSG:{srs_id} "
+                    f"— datum, ellipsoid, or projection parameters mismatch"
+                )
+        except Exception as _eq_err:
+            math_equiv = None
+            warnings.append(
+                f"CRS mathematical equivalence check could not be completed: {_eq_err}"
+            )
+
     except Exception as _wkt_parse_err:
         issues.append(
             f"pyproj.CRS.from_wkt() failed — WKT may be malformed or WKT1: "
             f"{_wkt_parse_err}"
         )
 
-    return issues, warnings, epsg_crs
+    return issues, warnings, epsg_crs, math_equiv
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -863,45 +897,11 @@ def pick_files_dialog() -> list[str]:
         font=("Arial", 9), cursor="hand2",
     ).pack(side="right")
 
-    # Centre window on screen
     root.update_idletasks()
-    w, h = root.winfo_width(), root.winfo_height()
-    sw, sh = root.winfo_screenwidth(), root.winfo_screenheight()
-    root.geometry(f"{w}x{h}+{(sw - w) // 2}+{(sh - h) // 2}")
-
-    root.protocol("WM_DELETE_WINDOW", root.destroy)
     root.mainloop()
-
     try:
         root.destroy()
     except Exception:
         pass
 
-    if not selected_paths:
-        print("  No file selected — exiting.")
-        return []
-
-    # Deduplicate while preserving order
-    seen, unique = set(), []
-    for p in selected_paths:
-        if p not in seen:
-            seen.add(p)
-            unique.append(p)
-
-    return unique
-
-
-
-# ──────────────────────────────────────────────────────────────────────────────
-# ROLLUP METADATA
-# Per-requirement static knowledge used in the summary table.
-#
-# auditor_checks : list of things our internal cross-check layer verifies
-#                  BEYOND what the basic check does (catches blind spots)
-# manual_notes   : findings from our manual session analysis (bugs confirmed)
-# confidence     : "High" / "Medium" / "Low"
-#   High   = check fully implements ATS, no known bugs
-#   Medium = partial check (PASS*) OR one known gap/bug
-#   Low    = known validator bug that inverts/misses results
-# ──────────────────────────────────────────────────────────────────────────────
-
+    return sorted(set(selected_paths))

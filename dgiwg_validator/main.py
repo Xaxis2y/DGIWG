@@ -1,4 +1,4 @@
-"""Entry-point logic for the DGIWG GeoPackage validator (v1.54.1).
+"""Entry-point logic for the DGIWG GeoPackage validator (v1.55).
 
 process_file() validates a single GeoPackage and writes its report.
 main() parses CLI args and drives batch or interactive mode.
@@ -177,7 +177,7 @@ def process_file(
                             "detail":     (_rv.get("detail") or "")[:1000],
                         }
             _json_payload = {
-                "schema_version": "1.54.1",
+                "schema_version": "1.55",
                 "file":      os.path.basename(gpkg_path),
                 "software":  profile.get("source_software", "UNKNOWN"),
                 "verdict":   verdict,
@@ -211,7 +211,7 @@ def main() -> None:
 
     parser = argparse.ArgumentParser(
         prog="dgiwg_validator",
-        description="DGIWG GeoPackage Compliance Report Generator — STD-DP-19-005 v1.1 (script v1.54.1)",
+        description="DGIWG GeoPackage Compliance Report Generator — STD-DP-19-005 v1.1 (script v1.55)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=textwrap.dedent("""\
             Examples:
@@ -317,7 +317,7 @@ def main() -> None:
     parser.add_argument(
         "--version",
         action="version",
-        version="%(prog)s 1.54.1",
+        version="%(prog)s 1.55",
     )
     # v1.49: --output-dir flag — write all reports to this folder
     parser.add_argument(
@@ -509,4 +509,6 @@ def main() -> None:
         _write_rollup(all_results, rollup_dir)
 
     print("\n  All files processed.")
-    input("  Press Enter to close 
+    input("  Press Enter to close …")
+
+

@@ -1,4 +1,4 @@
-"""Lookup tables and constants for the DGIWG validator (v1.54).
+"""Lookup tables and constants for the DGIWG validator (v1.55).
 
 Pure data: no I/O, no network calls, no cross-module imports.
 """

@@ -1,4 +1,4 @@
-"""Network/internet check helpers for the DGIWG validator (v1.54)."""
+"""Network/internet check helpers for the DGIWG validator (v1.55)."""
 import os
 import sys
 import json

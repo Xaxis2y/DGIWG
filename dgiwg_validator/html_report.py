@@ -1,4 +1,4 @@
-"""Per-file HTML report rendering for the DGIWG validator (v1.54)."""
+"""Per-file HTML report rendering for the DGIWG validator (v1.55)."""
 import os
 import sys
 import html
