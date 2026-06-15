@@ -1,4 +1,4 @@
-DGIWG GeoPackage Compliance Validator (v1.54)
+DGIWG GeoPackage Compliance Validator (v1.56)
 
 Overview
 
