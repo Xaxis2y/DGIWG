@@ -1,124 +1,305 @@
 # DGIWG GeoPackage Compliance Validator
 
-A Python tool that checks `.gpkg` (OGC GeoPackage) files against the **DGIWG STD-DP-19-005 v1.1** Defence Profile of GeoPackage 1.2, and produces detailed HTML/JSON/CSV compliance reports.
+**Version:** 1.59 (Release)  
+**Standard:** DGIWG STD-DP-19-005 v1.1 (GeoPackage Profile 1.4, Edition 1.1)  
+**License:** GPL-2.0-or-later  
+**Copyright:** © 2026 Eui Soo SON
 
-Current version: **v1.58** (pre-release)
+---
 
-## What it does
+## What This Tool Does
 
-- Runs all 37 requirements defined in DGIWG STD-DP-19-005 v1.1 (Table 6), covering extensions, CRS rules, WKT2 structure, metadata (DMF/ISO 19115), tile pyramids, and gridded coverage data.
-- Two requirements (Req 1, Req 2) require the OGC CITE TeamEngine test suite and are reported as SKIPPED — they cannot be automated. One requirement (Req 6) depends on a project-specific product profile and is also SKIPPED with guidance on how to check it manually.
-- Detects the likely authoring tool (QGIS/GDAL vs ArcGIS vs unknown) from structural fingerprints and attaches tool-specific remediation hints to relevant failures.
-- Produces a per-file HTML report, a JSON companion file (stable schema for CI pipelines), and a batch rollup HTML/CSV when validating multiple files.
-- Runs fully offline (`--offline`) for air-gapped environments — no requirement check depends on internet access to produce a verdict; a few checks additionally cross-reference the EPSG registry and OGC TileMatrixSet definitions online when network access is available.
-- Optional libraries (`shapely`, `Pillow`, `pyproj`, `lxml`) deepen specific checks (geometry validity, tile pixel decoding, datum cross-checks, XML schema validation) but are not required — checks fall back to structural-only validation and report `PASS*` when a library is missing.
+The DGIWG GeoPackage Compliance Validator checks whether GeoPackage files (.gpkg) conform to the Defence Geospatial Information Working Group (DGIWG) standard for geospatial data. It validates:
 
-## Requirements
+- **Structure & metadata** — required tables, columns, data types, spatial reference systems
+- **Tile pyramids** — zoom levels, zoom_level constraints, tile matrix definitions
+- **Feature tables** — geometry encoding, coordinate ranges, mandatory fields
+- **Optional extensions** — registered extensions and their compliance
+- **XSD validation** — detailed metadata document structure (when lxml is installed)
 
-- Python 3.10+
-- Optional, for full-depth checks:
-  ```
-  pip install shapely Pillow pyproj lxml
-  ```
+Output includes per-file HTML reports with detailed pass/fail breakdown and a rollup CSV for batch analysis.
 
-## Installation
+---
 
-Clone or download this repository, then run the package directly — no build step required.
+## Quick Start
 
-```
-git clone <this-repo-url>
-cd DGIWG_GeoPackage_Validator
-python DGIWG_Validator_v1_58.py
-```
+### 1. Install (Anaconda Prompt)
 
-## Usage
+Never install into `base` — always use a dedicated environment:
 
-**Interactive mode** (file picker dialog):
-```
-python DGIWG_Validator_v1_58.py
+```batch
+conda create -n dgiwg python=3.11 -y
+conda activate dgiwg
+pip install shapely Pillow pyproj lxml
 ```
 
-**Command-line mode:**
-```
-# Validate a single file
-python -m dgiwg_validator myfile.gpkg
+### 2. Run
 
-# Validate every .gpkg in a folder (add --recursive for subfolders)
-python -m dgiwg_validator C:\Data\Project_Alpha
+Navigate to the project folder and run one of these:
 
-# Air-gapped / offline network — skip all EPSG/OGC internet checks
-python -m dgiwg_validator --offline myfile.gpkg
-
-# Write all reports to a specific folder
-python -m dgiwg_validator --output-dir out\ C:\Data\Project_Alpha
-
-# Stop at the first non-conformant file (useful in CI, exits 1)
-python -m dgiwg_validator --fail-fast myfile.gpkg
+**Single file:**
+```batch
+python DGIWG_Validator_v1_59.py path\to\file.gpkg
 ```
 
-Run `python -m dgiwg_validator --help` for the full flag list (`--sample-size`, `--timeout`, `--quiet`, `--no-install`, `--dir`, `--file`, `--recursive`, `--version`).
+**Folder (all GeoPackages):**
+```batch
+python DGIWG_Validator_v1_59.py path\to\folder
+```
 
-### Output
+**Module form:**
+```batch
+python -m dgiwg_validator path\to\file.gpkg
+```
 
-For each file: `<name>_<TOOL>_DGIWG_Report.html` and a matching `.json` (schema-versioned, containing verdict, per-requirement status/detail, forensic tool detection, and internet-check results). For batch runs: `DGIWG_GPKG_FINAL_REPORT.html` and `.csv` summarizing pass/fail rates across all requirements and files.
+### 3. Read Results
 
-Each requirement resolves to one of:
+- **HTML report** — `<filename>_UNKNOWN_DGIWG_Report.html` (detailed, color-coded)
+- **JSON report** — `<filename>_UNKNOWN_DGIWG_Report.json` (machine-readable)
+- **Rollup CSV** — `rollup_DGIWG_Validation.csv` (batch summary)
 
-| Status | Meaning |
+**Verdict meanings:**
+- **CONFORMANT** — passes all executed checks
+- **LIKELY CONFORMANT** — passes, but some checks skipped (partial mode)
+- **NON-CONFORMANT** — fails one or more checks
+
+For full documentation, see **QUICKSTART.html** or **DGIWG_GeoPackage_Validator_User_Manual_v1.59.docx**.
+
+---
+
+## Key Features
+
+| Feature | Details |
 |---|---|
-| `PASS` | Fully automated check passed |
-| `PASS*` | Passed, but full verification needs a manual step or an optional library |
-| `FAIL` | Non-conformant |
-| `SKIPPED` | Not applicable to this file, or not automatable (Req 1, 2, 6) |
+| **Offline mode** | `--offline` disables internet checks (default: enabled) |
+| **Quiet output** | `--quiet` suppresses report-written chatter, prints only summaries |
+| **Fail-fast** | `--fail-fast` stops after first non-conformant file |
+| **Custom output** | `--output-dir path` saves reports to a specific folder |
+| **Recursive** | `--recursive` searches subdirectories for .gpkg files |
+| **Help & version** | `--help` or `--version` |
 
-## Project layout
-
-```
-dgiwg_validator/          Core package
-  checks.py                 Req 1-37 implementations + dispatch table
-  constants.py               CRS allowlists, DGIWG tables, guidance text
-  forensics.py               Source-software detection + deep-dive checks
-  net.py                     EPSG/OGC internet checks (offline-aware)
-  html_report.py             Per-file HTML report renderer
-  rollup.py                   Batch rollup HTML/CSV renderer
-  utils.py                    SQLite helpers, file profiling, scoring
-  main.py                      CLI argument parsing and batch driver
-  config.py                    Runtime flags (--offline, --quiet, etc.)
-DGIWG_Validator_v1_58.py   Double-clickable launcher
-dgiwg_epsg_cache.json      Offline EPSG registry cache (128 DGIWG CRS codes)
-run_local_tests.py         Self-test harness (synthetic GeoPackages, no GDAL needed)
-package_release.py         Builds a clean dist/ zip for release
+**Example — batch validation, offline, quiet:**
+```batch
+python -m dgiwg_validator --recursive --offline --quiet --output-dir ./reports ./data
 ```
 
-## Testing
+---
 
-`run_local_tests.py` generates synthetic GeoPackages with the Python standard library only (no GDAL required), runs the validator against them in `--offline` mode, and asserts the expected status on every affected requirement:
+## Installation & Testing
 
-```
+### Option A: Quick Test (No Pip Install)
+
+If you just want to test without installing dependencies system-wide:
+
+```batch
+conda activate dgiwg
+cd path\to\DGIWG_GeoPackage_Validator_v1.59
 python run_local_tests.py
 ```
 
-A timestamped log (`local_test_log_*.txt`) is written next to the script with full step-by-step detail. Exit code 0 means every assertion passed.
-
-## Building a release
-
+Expected output:
 ```
+RESULT: 62/62 assertions passed
+ALL TESTS PASSED ✔
+```
+
+A detailed log file `local_test_log_<timestamp>.txt` is written either way.
+
+### Option B: Full Setup (Recommended)
+
+```batch
+conda activate dgiwg
+pip install shapely Pillow pyproj lxml
+cd path\to\DGIWG_GeoPackage_Validator_v1.59
+python run_local_tests.py
 python package_release.py
 ```
 
-Produces `dist/DGIWG_GeoPackage_Validator_v<version>_pre.zip` containing the package, launcher, EPSG cache, and a `VERSION.txt`, with caches, generated reports, and prior-version launchers excluded.
+---
 
-## Known limitations
+## Optional Dependencies
 
-- Req 1 and Req 2 (OGC Base/Options conformance) require the OGC CITE TeamEngine test suite and are not automated by this tool.
-- Req 6 (Conditional Extensions) depends on a project-specific DGIWG product profile that this tool has no access to; it is reported SKIPPED with a manual-check procedure.
-- Geometry and tile BLOB checks (Req 24, Req 26) sample a configurable subset of rows per table (`--sample-size`) rather than scanning every row, for performance on large files.
-- The verdict `CONFORMANT` requires zero `FAIL` and zero `PASS*` results across all applicable requirements; in practice most real-world files land on `LIKELY CONFORMANT (partial checks)` because some checks are inherently partial (missing optional libraries, or requirements that are only partially automatable).
+The validator works without these, but performance and coverage improve with them installed:
+
+| Package | Purpose | Impact if missing |
+|---|---|---|
+| **shapely** | Geometry validation | Geometry checks skipped; reports `PASS*` |
+| **Pillow** | Image tile inspection | Tile image validation skipped; reports `PASS*` |
+| **pyproj** | CRS transformation | CRS checks use basic logic only; reports `PASS*` |
+| **lxml** | XSD metadata validation | Req 18 skips structural checks; reports `PASS*` |
+
+Install all: `pip install shapely Pillow pyproj lxml`
+
+---
+
+## Documentation
+
+| File | Purpose |
+|---|---|
+| **QUICKSTART.html** | Single-page quick reference — what the tool does, setup, how to read verdicts, flags, troubleshooting |
+| **DGIWG_GeoPackage_Validator_User_Manual_v1.59.docx** | Comprehensive manual — complete option reference, exit codes, requirements table, limitations, self-test procedure |
+| **RELEASE_NOTES_v1.59.md** | Detailed changelog — behavioral changes, robustness fixes, testing updates |
+| **README.md** | This file — overview and quick start |
+
+---
+
+## Troubleshooting
+
+### "ModuleNotFoundError: No module named 'shapely'"
+
+Install optional dependencies:
+```batch
+conda activate dgiwg
+pip install shapely Pillow pyproj lxml
+```
+
+### "is not a valid SQLite/GeoPackage file"
+
+The file is corrupted or not a GeoPackage. Validator skips it and continues.
+
+### Report says "PASS\*" everywhere
+
+One or more optional libraries are missing. Install them:
+```batch
+pip install shapely Pillow pyproj lxml
+```
+
+### Exit code is 1 (non-conformant)
+
+The file fails one or more DGIWG requirements. See the HTML or JSON report for details. Use `--fail-fast` to stop after the first failure.
+
+### "Access is denied" on Windows during package build
+
+Close all Python processes and manually delete the `dist\` folder:
+```batch
+taskkill /F /IM python.exe
+rmdir /s /q dist
+python package_release.py
+```
+
+For more help, see **QUICKSTART.html** troubleshooting table.
+
+---
+
+## Release Notes
+
+**v1.59 (2026-08-13) — First Full Release**
+
+Major fixes in this version:
+- **Req 4:** CONFORMANT verdict is now reachable (was impossible in v1.58)
+- **Req 18:** XSD validation outcome now always reported; `lxml` added to probe
+- **--quiet flag:** Now actually suppresses report-written chatter
+- **4-tuple normalization:** Manual checks return uniform structure
+- **Key-type filtering:** Fragile hardcoded blocklists replaced with type-based selection
+- **Packaging:** Prefix-based directory exclusion prevents stale folders in archives
+
+See **RELEASE_NOTES_v1.59.md** for complete details.
+
+---
+
+## Development & Testing
+
+### Run Self-Tests
+
+```batch
+conda activate dgiwg
+cd path\to\project
+python run_local_tests.py
+```
+
+This generates test GeoPackages, runs validation, and verifies 62 assertions.
+
+### Build Release Archive
+
+```batch
+python package_release.py
+```
+
+Output:
+- `dist\DGIWG_GeoPackage_Validator_v1.59\` — staged folder
+- `dist\DGIWG_GeoPackage_Validator_v1.59.zip` — release archive (~0.18 MB)
+
+The manifest check aborts if required assets are missing (launcher, manual, quick-start, etc.).
+
+---
+
+## Files in This Release
+
+### Core Package
+- `dgiwg_validator/` — main package (8 Python modules)
+- `DGIWG_Validator_v1_59.py` — launcher script
+
+### Documentation
+- `README.md` — this file
+- `QUICKSTART.html` — quick-start reference
+- `DGIWG_GeoPackage_Validator_User_Manual_v1.59.docx` — full manual
+- `RELEASE_NOTES_v1.59.md` — changelog
+
+### Testing & Building
+- `run_local_tests.py` — 62 regression tests
+- `package_release.py` — release packaging script
+
+### Data
+- `dgiwg_epsg_cache.json` — embedded EPSG database
+- `VERSION.txt` — version metadata
+
+### Excluded (Maintainer Only)
+- `build_manual.js` — generates User Manual (requires Node.js)
+- `REVIEW_FINDINGS_*.md` — internal pre-release notes
+
+---
+
+## Project Structure
+
+```
+DGIWG_GeoPackage_Validator_v1.59/
+├── dgiwg_validator/           # Core validation package
+│   ├── __init__.py            # Version and exports
+│   ├── __main__.py            # Entry point for -m dgiwg_validator
+│   ├── main.py                # CLI argument parsing
+│   ├── checks.py              # All 32 DGIWG requirements
+│   ├── config.py              # Configuration & flags
+│   ├── constants.py           # Requirement definitions (auto-docs)
+│   ├── html_report.py         # HTML report generation
+│   ├── rollup.py              # CSV rollup and batch reporting
+│   ├── utils.py               # Utilities (library probe, scoring)
+│   ├── forensics.py           # Metadata inspection
+│   └── net.py                 # Network operations (online mode)
+├── DGIWG_Validator_v1_59.py   # Launcher (runs -m dgiwg_validator)
+├── VERSION.txt                # Release metadata
+├── dgiwg_epsg_cache.json      # EPSG codes (offline reference)
+├── README.md                  # This file
+├── QUICKSTART.html            # Quick-start guide
+├── DGIWG_GeoPackage_Validator_User_Manual_v1.59.docx  # Full manual
+├── RELEASE_NOTES_v1.59.md     # Changelog
+├── run_local_tests.py         # Test suite (62 assertions)
+└── package_release.py         # Release builder
+```
+
+---
+
+## Requirements
+
+- **Python:** 3.11+
+- **OS:** Windows, Linux, macOS
+- **DGIWG Standard:** STD-DP-19-005 v1.1
+- **GeoPackage:** Version 1.4 (SQLite 3.9+)
+
+Optional dependencies (greatly recommended): `shapely`, `Pillow`, `pyproj`, `lxml`
+
+---
 
 ## License
 
-GPL-2.0-or-later. Copyright (c) 2026 Eui Soo SON.
+GPL-2.0-or-later — See LICENSE file for details.
 
-## Standard reference
+---
 
-DGIWG STD-DP-19-005 v1.1, *Defence Profile of OGC's GeoPackage 1.2*, May 2, 2025. Published by the Defence Geospatial Information Working Group (DGIWG): https://dgiwg.org
+## Support & Feedback
+
+For issues, questions, or feedback about this validator, see the troubleshooting section above or consult the **User Manual** and **QUICKSTART.html** included in this release.
+
+---
+
+*DGIWG GeoPackage Compliance Validator v1.59*  
+*MCE/T&E — Mapping and Charting Establishment / Geomatics Engineering Trials & Evaluation Support Section (GETESS)*
