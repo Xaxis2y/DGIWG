@@ -291,7 +291,8 @@ Optional dependencies (greatly recommended): `shapely`, `Pillow`, `pyproj`, `lxm
 
 ## License
 
-GPL-2.0-or-later — See LICENSE file for details.
+**SPDX-License-Identifier: GPL-2.0-or-later**  
+**Copyright (c) 2026 Eui Soo SON**
 
 ---
 
@@ -302,4 +303,4 @@ For issues, questions, or feedback about this validator, see the troubleshooting
 ---
 
 *DGIWG GeoPackage Compliance Validator v1.59*  
-*MCE/T&E — Mapping and Charting Establishment / Geomatics Engineering Trials & Evaluation Support Section (GETESS)*
+
