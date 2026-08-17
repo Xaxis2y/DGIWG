@@ -1,0 +1,197 @@
+DGIWG GeoPackage Validator v1.60 validation 
+Started: 2026-08-17 10:35:01.31 
+ 
+Python 3.11.15
+Pillow 11.3.0
+lxml 6.1.1
+pyproj 3.7.2
+shapely 2.1.2
+dgiwg_validator 1.60
+usage: dgiwg_validator [-h] [--offline] [--no-install] [--sample-size N]
+                       [--timeout SECONDS] [--json] [--dir FOLDER]
+                       [--file FILE] [--version] [--output-dir FOLDER]
+                       [--recursive] [--quiet] [--fail-fast]
+                       [FILE_OR_FOLDER ...]
+
+DGIWG GeoPackage Compliance Report Generator — STD-DP-19-005 v1.1 (script v1.60)
+
+positional arguments:
+  FILE_OR_FOLDER       GeoPackage file(s) or folder(s) containing .gpkg files.
+                       Omit to open the interactive file-picker dialog.
+
+options:
+  -h, --help           show this help message and exit
+  --offline            Disable all internet checks (EPSG URI verification, OGC
+                       TMS validation). Useful on air-gapped / 국방망 networks.
+                       Affected checks return PASS* with an 'offline mode'
+                       note instead of querying external endpoints.
+  --no-install         Skip the optional-library install prompts entirely.
+                       Libraries that are already installed will still be
+                       used; missing ones will produce PASS* results as
+                       normal.
+  --sample-size N      Number of geometry/tile BLOBs to sample per table for
+                       Req 24 and Req 26 (default: 25). Higher values give
+                       broader coverage at the cost of speed.
+  --timeout SECONDS    Network timeout in seconds for all HTTP checks — EPSG
+                       API, OGC TMS URI verification, etc. (default: 8s).
+                       Increase on slow connections; decrease to fail faster
+                       on unresponsive endpoints.
+  --json               Retained for backward compatibility — since v1.53 the
+                       JSON companion report ({stem}_DGIWG_Report.json) is
+                       ALWAYS written alongside each HTML file, so this flag
+                       has no additional effect. Contains verdict, counts,
+                       software, and per-requirement status/detail/compliance.
+  --dir FOLDER         Explicit folder path containing .gpkg files to
+                       validate. All .gpkg files inside the folder are
+                       processed. Equivalent to supplying FOLDER as a
+                       positional argument. May be repeated to process
+                       multiple folders.
+  --file FILE          Explicit path to a single .gpkg file to validate.
+                       Equivalent to supplying FILE as a positional argument.
+                       May be repeated to process multiple files.
+  --version            show program's version number and exit
+  --output-dir FOLDER  Write all HTML/JSON/CSV reports to this folder instead
+                       of the default 'reports/' subfolder alongside each
+                       GeoPackage.
+  --recursive          When a folder is given, use rglob('**/*.gpkg') instead
+                       of glob('*.gpkg') to find GeoPackages in nested
+                       subdirectories.
+  --quiet              Suppress per-file progress banner output. Only final
+                       summary counts and errors are shown.
+  --fail-fast          Stop processing after the first file that has any FAIL
+                       result. Exits with code 1 after printing a clear
+                       message.
+
+v1.60 fix: these examples used to invoke "dgiwg_validator.py",
+a filename that does not exist in the distribution. Use either the
+versioned launcher (DGIWG_Validator_v1_60.py) or the module form
+shown below.
+
+Examples:
+  # Interactive file picker (no arguments)
+  python -m dgiwg_validator
+
+  # Validate a single file
+  python -m dgiwg_validator myfile.gpkg
+
+  # Validate all .gpkg files in a folder (add --recursive for subfolders)
+  python -m dgiwg_validator "C:\Data\Project_Alpha"
+  python -m dgiwg_validator --recursive "C:\Data\Project_Alpha"
+
+  # Explicit --file and --dir flags (identical to positional arguments)
+  python -m dgiwg_validator --file map_data.gpkg
+  python -m dgiwg_validator --dir "C:\Data\Project_Alpha"
+
+  # Air-gapped machine — skip all EPSG/OGC internet checks
+  python -m dgiwg_validator --offline myfile.gpkg
+
+  # Skip the optional-library install prompts on locked-down systems
+  python -m dgiwg_validator --no-install myfile.gpkg
+
+  # Sample more geometry blobs per table for deeper Req 24 coverage
+  python -m dgiwg_validator --sample-size 50 myfile.gpkg
+
+  # Batch QA: one summary line per file, all reports in one folder
+  python -m dgiwg_validator --quiet --output-dir "C:\QA\reports" "C:\Data"
+
+  # Stop at the first non-conformant file (exit code 1)
+  python -m dgiwg_validator --fail-fast "C:\Data"
+
+  # Equivalent launcher form for any of the above
+  python DGIWG_Validator_v1_60.py --offline myfile.gpkg
+[10:35:02] ======================================================================
+[10:35:02] DGIWG Validator local self-test
+[10:35:02] Python     : 3.11.15  (C:\ProgramData\anaconda3\envs\dgiwg\python.exe)
+[10:35:02] Project dir: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened
+[10:35:02] Validator  : v1.60
+[10:35:02] Optional libs: shapely=OK, PIL=OK, pyproj=OK, lxml=OK
+[10:35:02] STEP: generating good_tiles.gpkg (conformant tile pyramid)
+[10:35:02]   created (65536 bytes)
+[10:35:02] STEP: generating bad_mixed.gpkg (deliberate violations)
+[10:35:02]   created (49152 bytes)
+[10:35:02] STEP: generating features.gpkg (features, invalid geometry)
+[10:35:02]   created (36864 bytes)
+[10:35:02] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --offline --no-install --quiet --output-dir C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\local_test\reports C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\local_test\test_gpkg
+[10:35:03]   exit code = 1
+[10:35:03]   report loaded: bad_mixed_QGIS_DGIWG_Report.json  verdict=NON-CONFORMANT
+[10:35:03]   report loaded: features_UNKNOWN_DGIWG_Report.json  verdict=NON-CONFORMANT
+[10:35:03]   report loaded: good_tiles_UNKNOWN_DGIWG_Report.json  verdict=LIKELY CONFORMANT (partial checks)
+[10:35:03]   OK   good_tiles.gpkg Req 3: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 4: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 7: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 8: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 13: PASS*
+[10:35:03]   OK   good_tiles.gpkg Req 18: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 19: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 21: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 22: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 25: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 27: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 30: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 24: PASS
+[10:35:03]   OK   good_tiles.gpkg Req 26: PASS
+[10:35:03]   OK   bad_mixed.gpkg Req 3: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 5: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 7: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 8: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 13: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 18: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 19: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 25: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 26: FAIL
+[10:35:03]   OK   bad_mixed.gpkg Req 27: FAIL
+[10:35:03]   OK   features.gpkg Req 3: FAIL
+[10:35:03]   OK   features.gpkg Req 4: PASS
+[10:35:03]   OK   features.gpkg Req 5: PASS*
+[10:35:03]   OK   features.gpkg Req 9: PASS*
+[10:35:03]   OK   features.gpkg Req 24: FAIL
+[10:35:03]   OK   features.gpkg Req 18: FAIL
+[10:35:03]   OK   features.gpkg Req 19: FAIL
+[10:35:03] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --offline --no-install --quiet --fail-fast --output-dir C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\local_test\ff C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\local_test\test_gpkg\bad_mixed.gpkg
+[10:35:04]   exit code = 1
+[10:35:04] STEP: v1.60 — version stamp consistency
+[10:35:04]   OK   package __version__ = 1.60
+[10:35:04]   OK   launcher present: DGIWG_Validator_v1_60.py
+[10:35:04]   OK   VERSION.txt states 1.60
+[10:35:04]   OK   JSON schema_version = 1.60 in all reports
+[10:35:04] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --version
+[10:35:04]   exit code = 0
+[10:35:04]   OK   --version reports 1.60
+[10:35:04] STEP: v1.60 — --quiet suppresses report-written chatter
+[10:35:04]   OK   --quiet suppressed 'HTML report written:'
+[10:35:04]   OK   --quiet suppressed 'Rollup HTML written:'
+[10:35:04]   OK   --quiet suppressed 'Rollup CSV  written:'
+[10:35:04]   OK   --quiet still prints the per-file summary line
+[10:35:04] STEP: v1.60 — _manual_checks() returns uniform 4-tuples
+[10:35:07]   OK   all 90 manual entries are 4-tuples
+[10:35:07]   OK   4-way unpack of every manual entry succeeds
+[10:35:07] STEP: v1.60 — conformance-scope banner in HTML outputs
+[10:35:07]   OK   scope banner present in all 3 per-file reports
+[10:35:07]   OK   scope banner present in rollup HTML
+[10:35:07] STEP: v1.60 — Req 18 reports XSD validation status
+[10:35:07]   OK   Req 18 XSD status = ENABLED (lxml present)
+[10:35:07] STEP: v1.60 — lxml included in the optional-library probe
+[10:35:07]   OK   LIBRARY_STATUS['lxml'] = True
+[10:35:07] STEP: v1.60 — release assets present
+[10:35:07]   OK   asset present: QUICKSTART.html
+[10:35:07]   OK   asset present: DGIWG_GeoPackage_Validator_User_Manual_v1.60.docx
+[10:35:07]   OK   asset present: package_release.py
+[10:35:07]   OK   asset present: dgiwg_epsg_cache.json
+[10:35:07]   OK   QUICKSTART.html mentions v1.60
+[10:35:07] STEP: v1.60 — packager excludes _superseded_*/_to_delete_* folders
+[10:35:07]   OK   _superseded_v0/ excluded from both the staged folder and DGIWG_GeoPackage_Validator_v1.60.zip
+[10:35:07] STEP: v1.60 — verdict scope and validator-error separation
+[10:35:07]   OK   skipped checks prevent an unqualified CONFORMANT verdict
+[10:35:07]   OK   validator errors are distinct from data non-conformance
+[10:35:07] ======================================================================
+[10:35:07] RESULT: 65/65 assertions passed
+[10:35:07] ALL TESTS PASSED ✔
+[10:35:07] Log file: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\local_test_log_20260817_103502.txt
+Packaging DGIWG_GeoPackage_Validator_v1.60 (release)
+  manifest: all 16 required assets present
+  launcher: DGIWG_Validator_v1_60.py
+  staged  : C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\dist\DGIWG_GeoPackage_Validator_v1.60  (28 files)
+  archive : C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.60_hardened\dist\DGIWG_GeoPackage_Validator_v1.60.zip  (0.19 MB)
+Done.
+ 
+RESULT: PASS 

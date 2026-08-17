@@ -1,0 +1,783 @@
+DGIWG GeoPackage Validator v1.62 real-data validation 
+Input: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.62\..\geopackages 
+Output: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.62\..\geopackages\reports_v161_20260817_112009 
+ 
+Python 3.11.15
+Pillow 11.3.0
+lxml 6.1.1
+pyproj 3.7.2
+shapely 2.1.2
+  [--offline] Internet checks disabled.
+  Folder 'C:\Users\Son\Documents\ChatGPT\DGIWG Validator\DGIWG_GeoPackage_Validator_v1.62\..\geopackages': found 24 GeoPackage(s) (recursive)
+
+  ── File 1 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : arctic_60_41_2_2_2m_v4-1_gpkg_dem_clip1_50413855-lzw-dgiwg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (High confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : LIKELY CONFORMANT (partial checks)
+  PASS    : 13
+  FAIL    : 0
+  ERROR   : 0
+  PASS*   : 10
+  SKIPPED : 14
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\arctic_60_41_2_2_2m_v4-1_gpkg_dem_clip1_50413855-lzw-dgiwg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\arctic_60_41_2_2_2m_v4-1_gpkg_dem_clip1_50413855-lzw-dgiwg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\arctic_60_41_2_2_2m_v4-1_gpkg_dem_clip1_50413855-lzw-dgiwg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 2 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : Box_Kombi_dgiwg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (High confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 6
+  ERROR   : 0
+  PASS*   : 11
+  SKIPPED : 9
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Kombi_dgiwg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Kombi_dgiwg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Kombi_dgiwg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 3 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : Box_Raster_dgiwg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 7
+  ERROR   : 0
+  PASS*   : 9
+  SKIPPED : 10
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Raster_dgiwg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Raster_dgiwg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Raster_dgiwg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 4 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : Box_Vector_dgiwg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (High confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 3
+  FAIL    : 4
+  ERROR   : 0
+  PASS*   : 9
+  SKIPPED : 21
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Vector_dgiwg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Vector_dgiwg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\Box_Vector_dgiwg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 5 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : DGED_L4bU_n5563358_U_P_01_3395_LZW-1-dgiwg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (High confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 12
+  FAIL    : 2
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_L4bU_n5563358_U_P_01_3395_LZW-1-dgiwg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_L4bU_n5563358_U_P_01_3395_LZW-1-dgiwg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_L4bU_n5563358_U_P_01_3395_LZW-1-dgiwg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 6 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : DGED_L4bU_n5563358_U_P_01_CMPND_100233_dgiwg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Low confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_L4bU_n5563358_U_P_01_CMPND_100233_dgiwg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_L4bU_n5563358_U_P_01_CMPND_100233_dgiwg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_L4bU_n5563358_U_P_01_CMPND_100233_dgiwg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 7 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : DGED_Test_6_reproject_4979gpkg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 7
+  FAIL    : 6
+  ERROR   : 0
+  PASS*   : 9
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_Test_6_reproject_4979gpkg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_Test_6_reproject_4979gpkg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGED_Test_6_reproject_4979gpkg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 8 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : E005N19-4030x1010_XXGKGABCE-_GOKPI_000.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 7
+  FAIL    : 12
+  ERROR   : 0
+  PASS*   : 10
+  SKIPPED : 8
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\E005N19-4030x1010_XXGKGABCE-_GOKPI_000_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\E005N19-4030x1010_XXGKGABCE-_GOKPI_000_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\E005N19-4030x1010_XXGKGABCE-_GOKPI_000_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 9 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-cib-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-cib-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-cib-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-cib-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 10 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-dg-its-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dg-its-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dg-its-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dg-its-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 11 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-dg_foundation_geoint-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dg_foundation_geoint-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dg_foundation_geoint-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dg_foundation_geoint-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 12 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-dnc-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dnc-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dnc-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-dnc-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 13 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-hillshade-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: ArcGIS (Low confidence) → tag: _ARCGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-hillshade-20190125_ARCGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-hillshade-20190125_ARCGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-hillshade-20190125_ARCGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 14 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-nga_world_imagery-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: ArcGIS (Low confidence) → tag: _ARCGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-nga_world_imagery-20190125_ARCGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-nga_world_imagery-20190125_ARCGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-nga_world_imagery-20190125_ARCGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 15 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-nome-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (High confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 4
+  FAIL    : 4
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 21
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-nome-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-nome-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-nome-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 16 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-osm-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (High confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 4
+  FAIL    : 4
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 21
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-osm-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-osm-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-osm-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 17 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-osm_tiles-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-osm_tiles-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-osm_tiles-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-osm_tiles-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 18 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : jifx_192_exercise-scanned_maps-20190125.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 11
+  FAIL    : 3
+  ERROR   : 0
+  PASS*   : 8
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-scanned_maps-20190125_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-scanned_maps-20190125_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\jifx_192_exercise-scanned_maps-20190125_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 19 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : NGA_DGIWG-Example_Ft-Belvoir_15-16_v1-0_24JAN2023.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: ArcGIS (Low confidence) → tag: _ARCGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 15
+  FAIL    : 5
+  ERROR   : 0
+  PASS*   : 9
+  SKIPPED : 8
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NGA_DGIWG-Example_Ft-Belvoir_15-16_v1-0_24JAN2023_ARCGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NGA_DGIWG-Example_Ft-Belvoir_15-16_v1-0_24JAN2023_ARCGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NGA_DGIWG-Example_Ft-Belvoir_15-16_v1-0_24JAN2023_ARCGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 20 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : NRL_AERO_global-enroute_3-10_v1-1_07MAY2020.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: UNKNOWN (Low confidence) → tag: _UNKNOWN
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 1
+  FAIL    : 11
+  ERROR   : 0
+  PASS*   : 3
+  SKIPPED : 22
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_AERO_global-enroute_3-10_v1-1_07MAY2020_UNKNOWN_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_AERO_global-enroute_3-10_v1-1_07MAY2020_UNKNOWN_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_AERO_global-enroute_3-10_v1-1_07MAY2020_UNKNOWN_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 21 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : NRL_DBDBV7_All_COLOR1_Great_Lakes_7-10_v1-1_05NOV2024.gpkg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: UNKNOWN (Low confidence) → tag: _UNKNOWN
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 8
+  FAIL    : 10
+  ERROR   : 0
+  PASS*   : 4
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_DBDBV7_All_COLOR1_Great_Lakes_7-10_v1-1_05NOV2024.gpkg_UNKNOWN_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_DBDBV7_All_COLOR1_Great_Lakes_7-10_v1-1_05NOV2024.gpkg_UNKNOWN_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_DBDBV7_All_COLOR1_Great_Lakes_7-10_v1-1_05NOV2024.gpkg_UNKNOWN_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 22 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : NRL_DBDBV7_All_SHADED_3395-2_Great_Lakes_7-10_v1-1_05NOV2024-1-4-0.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 6
+  FAIL    : 12
+  ERROR   : 0
+  PASS*   : 4
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_DBDBV7_All_SHADED_3395-2_Great_Lakes_7-10_v1-1_05NOV2024-1-4-0_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_DBDBV7_All_SHADED_3395-2_Great_Lakes_7-10_v1-1_05NOV2024-1-4-0_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\NRL_DBDBV7_All_SHADED_3395-2_Great_Lakes_7-10_v1-1_05NOV2024-1-4-0_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 23 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : USGrid_Annual_O3_predictions_year2000_WGS84-9057-dgiwg.gpkg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 7
+  FAIL    : 8
+  ERROR   : 0
+  PASS*   : 7
+  SKIPPED : 15
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\USGrid_Annual_O3_predictions_year2000_WGS84-9057-dgiwg.gpkg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\USGrid_Annual_O3_predictions_year2000_WGS84-9057-dgiwg.gpkg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\USGrid_Annual_O3_predictions_year2000_WGS84-9057-dgiwg.gpkg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+
+  ── File 24 of 24 ──
+
+============================================================
+  DGIWG GeoPackage Compliance Report Generator
+  File : WPIGeopackage_great_lakes-dgiwg-dmf.gpkg.gpkg
+  Folder: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009
+============================================================
+
+→ Opening GeoPackage …
+→ Collecting file profile …
+→ Detecting source software (forensic analysis) …
+   Source software: QGIS/GDAL (Medium confidence) → tag: _QGIS
+→ Running requirement checks (Req 1–37) …
+→ Running forensic deep-dive checks …
+
+  Verdict : NON-CONFORMANT
+  PASS    : 2
+  FAIL    : 5
+  ERROR   : 0
+  PASS*   : 9
+  SKIPPED : 21
+
+→ Generating HTML report …
+  HTML report written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\WPIGeopackage_great_lakes-dgiwg-dmf.gpkg_QGIS_DGIWG_Report.html
+   Saved → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\WPIGeopackage_great_lakes-dgiwg-dmf.gpkg_QGIS_DGIWG_Report.html
+   JSON → C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\WPIGeopackage_great_lakes-dgiwg-dmf.gpkg_QGIS_DGIWG_Report.json
+
+============================================================
+  Done.
+============================================================
+
+  Rollup HTML written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGIWG_GPKG_FINAL_REPORT.html
+  Rollup CSV  written: C:\Users\Son\Documents\ChatGPT\DGIWG Validator\geopackages\reports_v161_20260817_112009\DGIWG_GPKG_FINAL_REPORT.csv
+ 
+Validator exit code: 1 
