@@ -1,0 +1,134 @@
+[12:05:38] ======================================================================
+[12:05:38] DGIWG Validator local self-test
+[12:05:38] Python     : 3.11.16  (C:\ProgramData\anaconda3\envs\dgiwg\python.exe)
+[12:05:38] Project dir: C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61
+[12:05:38] Validator  : v1.61
+[12:05:38] Optional libs: shapely=OK, PIL=OK, pyproj=OK, lxml=OK
+[12:05:38] STEP: generating good_tiles.gpkg (conformant tile pyramid)
+[12:05:38]   created (65536 bytes)
+[12:05:38] STEP: generating bad_mixed.gpkg (deliberate violations)
+[12:05:38]   created (49152 bytes)
+[12:05:38] STEP: generating features.gpkg (features, invalid geometry)
+[12:05:38]   created (36864 bytes)
+[12:05:38] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --offline --no-install --quiet --output-dir C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\reports C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\test_gpkg
+[12:05:39]   |   [--offline] Internet checks disabled.
+[12:05:39]   |   [--quiet] Per-file progress banners suppressed.
+[12:05:39]   |   Folder 'C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\test_gpkg': found 4 GeoPackage(s)
+[12:05:39]   |   bad_mixed.gpkg                                               NON-CONFORMANT           PASS=5 FAIL=16 PASS*=0 SKIP=16
+[12:05:39]   |   features.gpkg                                                NON-CONFORMANT           PASS=4 FAIL=10 PASS*=1 SKIP=22
+[12:05:39]   |   good_tiles.gpkg                                              CONFORMANT — REDUCED COVERAGE PASS=14 FAIL=0 PASS*=6 SKIP=17
+[12:05:39]   |   Coverage: incomplete on Req 5, Req 26
+[12:05:39]   |             Re-run with a larger --sample-size, or inspect the un-sampled rows/tiles by hand to close the gap.
+[12:05:39]   | 
+[12:05:39]   |   ERROR: 'junk.gpkg' is not a valid SQLite/GeoPackage file: file is not a database
+[12:05:39]   |   File skipped — not a valid GeoPackage.
+[12:05:39]   exit code = 0
+[12:05:39]   report loaded: bad_mixed_QGIS_DGIWG_Report.json  verdict=NON-CONFORMANT
+[12:05:39]   report loaded: features_UNKNOWN_DGIWG_Report.json  verdict=NON-CONFORMANT
+[12:05:39]   report loaded: good_tiles_UNKNOWN_DGIWG_Report.json  verdict=CONFORMANT — REDUCED COVERAGE
+[12:05:39]   OK   good_tiles.gpkg Req 3: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 4: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 7: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 8: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 13: PASS*
+[12:05:39]   OK   good_tiles.gpkg Req 18: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 19: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 21: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 22: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 25: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 27: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 30: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 24: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 26: PASS*
+[12:05:39]   OK   good_tiles.gpkg Req 28: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 29: PASS
+[12:05:39]   OK   good_tiles.gpkg Req 9: SKIPPED
+[12:05:39]   OK   good_tiles.gpkg Req 10: SKIPPED
+[12:05:39]   OK   good_tiles.gpkg Req 12: SKIPPED
+[12:05:39]   OK   good_tiles.gpkg Req 14: SKIPPED
+[12:05:39]   OK   good_tiles.gpkg Req 33: SKIPPED
+[12:05:39]   OK   bad_mixed.gpkg Req 3: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 5: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 7: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 8: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 13: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 18: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 19: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 25: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 26: FAIL
+[12:05:39]   OK   bad_mixed.gpkg Req 27: FAIL
+[12:05:39]   OK   features.gpkg Req 3: FAIL
+[12:05:39]   OK   features.gpkg Req 4: PASS
+[12:05:39]   OK   features.gpkg Req 5: PASS
+[12:05:39]   OK   features.gpkg Req 9: PASS
+[12:05:39]   OK   features.gpkg Req 24: FAIL
+[12:05:39]   OK   features.gpkg Req 18: FAIL
+[12:05:39]   OK   features.gpkg Req 19: FAIL
+[12:05:39] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --offline --no-install --quiet --fail-fast --output-dir C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\ff C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\test_gpkg\bad_mixed.gpkg
+[12:05:40]   |   [--offline] Internet checks disabled.
+[12:05:40]   |   [--quiet] Per-file progress banners suppressed.
+[12:05:40]   |   [--fail-fast] Will stop after first non-conformant file.
+[12:05:40]   |   bad_mixed.gpkg                                               NON-CONFORMANT           PASS=5 FAIL=16 PASS*=0 SKIP=16
+[12:05:40]   | 
+[12:05:40]   | FAIL-FAST: stopping after first non-conformant file — bad_mixed.gpkg
+[12:05:40]   exit code = 1
+[12:05:40] STEP: v1.59 — version stamp consistency
+[12:05:40]   OK   package __version__ = 1.61
+[12:05:40]   OK   launcher present: DGIWG_Validator_v1_61.py
+[12:05:40]   OK   VERSION.txt states 1.61
+[12:05:40]   OK   JSON schema_version = 1.61 in all reports
+[12:05:40] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --version
+[12:05:40]   | dgiwg_validator 1.61
+[12:05:40]   exit code = 0
+[12:05:40]   OK   --version reports 1.61
+[12:05:40] STEP: v1.59 — --quiet suppresses report-written chatter
+[12:05:40]   OK   --quiet suppressed 'HTML report written:'
+[12:05:40]   OK   --quiet suppressed 'Rollup HTML written:'
+[12:05:40]   OK   --quiet suppressed 'Rollup CSV  written:'
+[12:05:40]   OK   --quiet still prints the per-file summary line
+[12:05:40] STEP: v1.59 — _manual_checks() returns uniform 4-tuples
+[12:05:43]   OK   all 90 manual entries are 4-tuples
+[12:05:43]   OK   4-way unpack of every manual entry succeeds
+[12:05:43] STEP: v1.59 — conformance-scope banner in HTML outputs
+[12:05:43]   OK   scope banner present in all 3 per-file reports
+[12:05:43]   OK   scope banner present in rollup HTML
+[12:05:43] STEP: v1.59 — Req 18 reports XSD validation status
+[12:05:43]   OK   Req 18 XSD status = ENABLED (lxml present)
+[12:05:43] STEP: v1.59 — lxml included in the optional-library probe
+[12:05:43]   OK   LIBRARY_STATUS['lxml'] = True
+[12:05:43] STEP: v1.59 — release assets present
+[12:05:43]   OK   asset present: QUICKSTART.html
+[12:05:43]   OK   asset present: DGIWG_GeoPackage_Validator_User_Manual_v1.61.docx
+[12:05:43]   OK   asset present: package_release.py
+[12:05:43]   OK   asset present: dgiwg_epsg_cache.json
+[12:05:43]   OK   QUICKSTART.html mentions v1.61
+[12:05:43] STEP: v1.59 — packager excludes _superseded_*/_to_delete_* folders
+[12:05:45]   OK   _superseded_v0/ excluded from both the staged folder and DGIWG_GeoPackage_Validator_v1.61.zip
+[12:05:45] STEP: v1.60 — Z/M derived from WKB type code, not the flags byte
+[12:05:45]   OK   2D geom + XY envelope (GDAL/QGIS default): has_z=False has_m=False
+[12:05:45]   OK   2D geom, no envelope: has_z=False has_m=False
+[12:05:45]   OK   3D geom, no envelope: has_z=True has_m=False
+[12:05:45]   OK   3D geom + XYZ envelope: has_z=True has_m=False
+[12:05:45]   OK   XYM geom + XYM envelope: has_z=False has_m=True
+[12:05:45]   OK   XYZM geom + XYZM envelope: has_z=True has_m=True
+[12:05:45]   OK   header_size matches the envelope indicator for codes 0-4
+[12:05:45]   OK   reserved envelope indicator 5 reported as invalid
+[12:05:45]   OK   missing 'GP' magic marker reported
+[12:05:45] STEP: v1.60 — 2D features with XY envelopes produce no Req 24 Z/M mismatch
+[12:05:45] STEP: running C:\ProgramData\anaconda3\envs\dgiwg\python.exe -m dgiwg_validator --offline --no-install --quiet --output-dir C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\envelopes\reports C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test\envelopes\env2d.gpkg
+[12:05:45]   |   [--offline] Internet checks disabled.
+[12:05:45]   |   [--quiet] Per-file progress banners suppressed.
+[12:05:45]   |   env2d.gpkg                                                   NON-CONFORMANT           PASS=4 FAIL=10 PASS*=1 SKIP=22
+[12:05:45]   exit code = 0
+[12:05:45]   OK   no Req 24 Z/M mismatch for 2D geometries with XY envelopes
+[12:05:45] STEP: v1.60 — Req 33 readable FAIL when gpkg_extensions is absent
+[12:05:45]   OK   Req 33 reports the missing gpkg_extensions table in plain text
+[12:05:45] STEP: v1.60 — net._http_get / _http_head are gated by --offline
+[12:05:45]   OK   _http_get refuses to run under --offline
+[12:05:45]   OK   _http_head refuses to run under --offline
+[12:05:45] STEP: v1.60 — rollup.py __main__ guard removed
+[12:05:45]   OK   rollup.py has no __main__ guard calling an undefined main()
+[12:05:45] ======================================================================
+[12:05:45] RESULT: 84/84 assertions passed
+[12:05:45] ALL TESTS PASSED ✔
+[12:05:45] Log file: C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\local_test_log_20260902_120538.txt

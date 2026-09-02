@@ -1,0 +1,302 @@
+============================================================ 
+ DGIWG exe build log - 2026-09-02 11:58:07.63                          
+============================================================ 
+[1/6] Activating "dgiwg" environment ... 
+Python 3.11.16
+[2/6] Checking PyInstaller is installed ... 
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'PyInstaller'
+  Not found - installing pyinstaller into "dgiwg" ... 
+Collecting pyinstaller>=6.0
+  Using cached pyinstaller-6.22.2-py3-none-win_amd64.whl.metadata (8.5 kB)
+Collecting altgraph (from pyinstaller>=6.0)
+  Using cached altgraph-0.17.5-py2.py3-none-any.whl.metadata (7.5 kB)
+Requirement already satisfied: packaging>=22.0 in C:\ProgramData\anaconda3\envs\dgiwg\Lib\site-packages (from pyinstaller>=6.0) (26.3)
+Collecting pefile>=2022.5.30 (from pyinstaller>=6.0)
+  Using cached pefile-2024.8.26-py3-none-any.whl.metadata (1.4 kB)
+Collecting pyinstaller-hooks-contrib>=2026.6 (from pyinstaller>=6.0)
+  Using cached pyinstaller_hooks_contrib-2026.7-py3-none-any.whl.metadata (16 kB)
+Collecting pywin32-ctypes>=0.2.1 (from pyinstaller>=6.0)
+  Using cached pywin32_ctypes-0.2.3-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: setuptools>=42.0.0 in C:\ProgramData\anaconda3\envs\dgiwg\Lib\site-packages (from pyinstaller>=6.0) (83.0.0)
+Using cached pyinstaller-6.22.2-py3-none-win_amd64.whl (1.4 MB)
+Using cached pefile-2024.8.26-py3-none-any.whl (74 kB)
+Using cached pyinstaller_hooks_contrib-2026.7-py3-none-any.whl (459 kB)
+Using cached pywin32_ctypes-0.2.3-py3-none-any.whl (30 kB)
+Using cached altgraph-0.17.5-py2.py3-none-any.whl (21 kB)
+Installing collected packages: altgraph, pywin32-ctypes, pyinstaller-hooks-contrib, pefile, pyinstaller
+
+Successfully installed altgraph-0.17.5 pefile-2024.8.26 pyinstaller-6.22.2 pyinstaller-hooks-contrib-2026.7 pywin32-ctypes-0.2.3
+  OK - PyInstaller ready. 
+[3/6] Checking required source files are present ... 
+  OK - all required files present. 
+[4/6] Cleaning previous build\ and dist\ output ... 
+[5/6] Running PyInstaller ... 
+388 INFO: PyInstaller: 6.22.2, contrib hooks: 2026.7
+388 INFO: Python: 3.11.16 (conda)
+404 INFO: Platform: Windows-10-10.0.26200-SP0
+405 INFO: Python environment: C:\ProgramData\anaconda3\envs\dgiwg
+409 INFO: Removing temporary files and cleaning cache in C:\Users\Son\AppData\Local\pyinstaller
+2603 INFO: Module search paths (PYTHONPATH):
+['C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Scripts\\pyinstaller.exe',
+ 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\python311.zip',
+ 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\DLLs',
+ 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib',
+ 'C:\\ProgramData\\anaconda3\\envs\\dgiwg',
+ 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages',
+ 'C:\\Users\\Son\\Documents\\DGIWG\\DGIWG_GeoPackage_Validator_v1.61']
+3060 INFO: Appending 'datas' from .spec
+3087 INFO: checking Analysis
+3087 INFO: Building Analysis because Analysis-00.toc is non existent
+3087 INFO: Looking for Python shared library...
+3087 INFO: Using Python shared library: C:\ProgramData\anaconda3\envs\dgiwg\python311.dll
+3087 INFO: Running Analysis Analysis-00.toc
+3087 INFO: Target bytecode optimization level: 0
+3087 INFO: Initializing module dependency graph...
+3089 INFO: Initializing module graph hook caches...
+3109 INFO: Analyzing modules for base_library.zip ...
+4436 INFO: Processing standard module hook 'hook-encodings.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+6004 INFO: Processing standard module hook 'hook-math.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+6170 INFO: Processing standard module hook 'hook-pickle.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+7271 INFO: Processing standard module hook 'hook-heapq.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+7775 INFO: Caching module dependency graph...
+7813 INFO: Analyzing C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\DGIWG_Validator_v1_61.py
+7898 INFO: Processing standard module hook 'hook-sqlite3.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+8657 INFO: Processing standard module hook 'hook-xml.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+8680 INFO: Processing standard module hook 'hook-xml.etree.cElementTree.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+8681 INFO: Processing pre-find-module-path hook 'hook-tkinter.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks\\pre_find_module_path'
+8682 INFO: TclTkInfo: initializing cached Tcl/Tk info...
+9075 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+9091 INFO: Processing standard module hook 'hook-lxml.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+9483 INFO: Processing standard module hook 'hook-lxml.etree.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+9799 INFO: Processing standard module hook 'hook-pyproj.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+9842 WARNING: Datas for pyproj not found at:
+C:\ProgramData\anaconda3\envs\dgiwg\Library\share\proj
+9857 INFO: Processing standard module hook 'hook-certifi.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+9910 INFO: Processing standard module hook 'hook-platform.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+10048 INFO: Processing standard module hook 'hook-shapely.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+10077 INFO: Processing standard module hook 'hook-numpy.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+10505 INFO: Processing pre-safe-import-module hook 'hook-typing_extensions.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks\\pre_safe_import_module'
+10506 INFO: SetuptoolsInfo: initializing cached setuptools info...
+11569 INFO: Processing standard module hook 'hook-difflib.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+11804 INFO: Processing standard module hook 'hook-multiprocessing.util.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+12347 INFO: Processing standard module hook 'hook-_ctypes.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+13143 INFO: Processing standard module hook 'hook-sysconfig.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+13814 INFO: Processing standard module hook 'hook-webbrowser.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+15211 INFO: Processing standard module hook 'hook-PIL.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+15309 INFO: Processing standard module hook 'hook-PIL.Image.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+15896 INFO: Processing standard module hook 'hook-PIL.ImageFilter.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+16199 INFO: Analyzing hidden import 'pyproj.__main__'
+16204 INFO: Analyzing hidden import 'shapely._geos'
+16204 INFO: Analyzing hidden import 'shapely.algorithms.polylabel'
+16206 INFO: Analyzing hidden import 'shapely.conftest'
+16209 INFO: Analyzing hidden import 'shapely.geos'
+16210 INFO: Analyzing hidden import 'shapely.ops'
+16227 INFO: Analyzing hidden import 'shapely.plotting'
+16232 INFO: Analyzing hidden import 'shapely.speedups'
+16234 INFO: Analyzing hidden import 'shapely.testing'
+16239 INFO: Analyzing hidden import 'shapely.tests'
+16240 INFO: Analyzing hidden import 'shapely.tests.common'
+16247 INFO: Analyzing hidden import 'shapely.tests.geometry'
+16248 INFO: Analyzing hidden import 'shapely.tests.geometry.test_collection'
+16254 INFO: Analyzing hidden import 'shapely.tests.geometry.test_coords'
+16261 INFO: Analyzing hidden import 'shapely.tests.geometry.test_decimal'
+16266 INFO: Analyzing hidden import 'shapely.tests.geometry.test_emptiness'
+16270 INFO: Analyzing hidden import 'shapely.tests.geometry.test_equality'
+16280 INFO: Analyzing hidden import 'shapely.tests.geometry.test_format'
+16285 INFO: Analyzing hidden import 'shapely.tests.geometry.test_geometry_base'
+16299 INFO: Analyzing hidden import 'shapely.tests.geometry.test_hash'
+16302 INFO: Analyzing hidden import 'shapely.tests.geometry.test_linestring'
+16311 INFO: Analyzing hidden import 'shapely.tests.geometry.test_multi'
+16313 INFO: Analyzing hidden import 'shapely.tests.geometry.test_multilinestring'
+16317 INFO: Analyzing hidden import 'shapely.tests.geometry.test_multipoint'
+16322 INFO: Analyzing hidden import 'shapely.tests.geometry.test_multipolygon'
+16327 INFO: Analyzing hidden import 'shapely.tests.geometry.test_point'
+16334 INFO: Analyzing hidden import 'shapely.tests.geometry.test_polygon'
+16353 INFO: Analyzing hidden import 'shapely.tests.legacy'
+16354 INFO: Analyzing hidden import 'shapely.tests.legacy.conftest'
+16355 INFO: Analyzing hidden import 'shapely.tests.legacy.test_affinity'
+16366 INFO: Analyzing hidden import 'shapely.tests.legacy.test_box'
+16368 INFO: Analyzing hidden import 'shapely.tests.legacy.test_buffer'
+16377 INFO: Analyzing hidden import 'shapely.tests.legacy.test_cga'
+16379 INFO: Analyzing hidden import 'shapely.tests.legacy.test_clip_by_rect'
+16383 INFO: Analyzing hidden import 'shapely.tests.legacy.test_create_inconsistent_dimensionality'
+16391 INFO: Analyzing hidden import 'shapely.tests.legacy.test_delaunay'
+16393 INFO: Analyzing hidden import 'shapely.tests.legacy.test_empty_polygons'
+16395 INFO: Analyzing hidden import 'shapely.tests.legacy.test_equality'
+16397 INFO: Analyzing hidden import 'shapely.tests.legacy.test_geointerface'
+16401 INFO: Analyzing hidden import 'shapely.tests.legacy.test_invalid_geometries'
+16403 INFO: Analyzing hidden import 'shapely.tests.legacy.test_linear_referencing'
+16408 INFO: Analyzing hidden import 'shapely.tests.legacy.test_linemerge'
+16411 INFO: Analyzing hidden import 'shapely.tests.legacy.test_locale'
+16412 INFO: Analyzing hidden import 'shapely.tests.legacy.test_make_valid'
+16414 INFO: Analyzing hidden import 'shapely.tests.legacy.test_mapping'
+16416 INFO: Analyzing hidden import 'shapely.tests.legacy.test_minimum_clearance'
+16417 INFO: Analyzing hidden import 'shapely.tests.legacy.test_ndarrays'
+16419 INFO: Analyzing hidden import 'shapely.tests.legacy.test_nearest'
+16421 INFO: Analyzing hidden import 'shapely.tests.legacy.test_operations'
+16426 INFO: Analyzing hidden import 'shapely.tests.legacy.test_operators'
+16429 INFO: Analyzing hidden import 'shapely.tests.legacy.test_orient'
+16434 INFO: Analyzing hidden import 'shapely.tests.legacy.test_parallel_offset'
+16437 INFO: Analyzing hidden import 'shapely.tests.legacy.test_persist'
+16440 INFO: Analyzing hidden import 'shapely.tests.legacy.test_pickle'
+16444 INFO: Analyzing hidden import 'shapely.tests.legacy.test_polygonize'
+16447 INFO: Analyzing hidden import 'shapely.tests.legacy.test_polylabel'
+16451 INFO: Analyzing hidden import 'shapely.tests.legacy.test_predicates'
+16455 INFO: Analyzing hidden import 'shapely.tests.legacy.test_prepared'
+16458 INFO: Analyzing hidden import 'shapely.tests.legacy.test_products_z'
+16460 INFO: Analyzing hidden import 'shapely.tests.legacy.test_shape'
+16463 INFO: Analyzing hidden import 'shapely.tests.legacy.test_shared_paths'
+16466 INFO: Analyzing hidden import 'shapely.tests.legacy.test_singularity'
+16468 INFO: Analyzing hidden import 'shapely.tests.legacy.test_snap'
+16470 INFO: Analyzing hidden import 'shapely.tests.legacy.test_split'
+16481 INFO: Analyzing hidden import 'shapely.tests.legacy.test_substring'
+16490 INFO: Analyzing hidden import 'shapely.tests.legacy.test_svg'
+16504 INFO: Processing standard module hook 'hook-xml.dom.domreg.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+16691 INFO: Analyzing hidden import 'shapely.tests.legacy.test_transform'
+16696 INFO: Analyzing hidden import 'shapely.tests.legacy.test_union'
+16698 INFO: Analyzing hidden import 'shapely.tests.legacy.test_validation'
+16700 INFO: Analyzing hidden import 'shapely.tests.legacy.test_vectorized'
+16709 INFO: Analyzing hidden import 'shapely.tests.legacy.test_voronoi_diagram'
+16713 INFO: Analyzing hidden import 'shapely.tests.legacy.test_wkb'
+16720 INFO: Analyzing hidden import 'shapely.tests.legacy.test_wkt'
+16722 INFO: Analyzing hidden import 'shapely.tests.legacy.threading_test'
+16724 INFO: Analyzing hidden import 'shapely.tests.test_constructive'
+16770 INFO: Analyzing hidden import 'shapely.tests.test_coordinates'
+16784 INFO: Analyzing hidden import 'shapely.tests.test_coverage'
+16793 INFO: Analyzing hidden import 'shapely.tests.test_creation'
+16817 INFO: Analyzing hidden import 'shapely.tests.test_creation_indices'
+16845 INFO: Analyzing hidden import 'shapely.tests.test_decorators'
+16853 INFO: Analyzing hidden import 'shapely.tests.test_geometry'
+16876 INFO: Analyzing hidden import 'shapely.tests.test_io'
+16921 INFO: Analyzing hidden import 'shapely.tests.test_linear'
+16948 INFO: Analyzing hidden import 'shapely.tests.test_measurement'
+16960 INFO: Analyzing hidden import 'shapely.tests.test_misc'
+17059 INFO: Analyzing hidden import 'shapely.tests.test_plotting'
+17065 INFO: Analyzing hidden import 'shapely.tests.test_predicates'
+17081 INFO: Analyzing hidden import 'shapely.tests.test_ragged_array'
+17099 INFO: Analyzing hidden import 'shapely.tests.test_set_operations'
+17116 INFO: Analyzing hidden import 'shapely.tests.test_strtree'
+17197 INFO: Analyzing hidden import 'shapely.tests.test_testing'
+17200 INFO: Analyzing hidden import 'PIL.AvifImagePlugin'
+17210 INFO: Analyzing hidden import 'PIL.BdfFontFile'
+17237 INFO: Analyzing hidden import 'PIL.BlpImagePlugin'
+17254 INFO: Analyzing hidden import 'PIL.BufrStubImagePlugin'
+17256 INFO: Analyzing hidden import 'PIL.ContainerIO'
+17260 INFO: Analyzing hidden import 'PIL.CurImagePlugin'
+17263 INFO: Analyzing hidden import 'PIL.DcxImagePlugin'
+17271 INFO: Analyzing hidden import 'PIL.DdsImagePlugin'
+17301 INFO: Analyzing hidden import 'PIL.EpsImagePlugin'
+17313 INFO: Analyzing hidden import 'PIL.FitsImagePlugin'
+17318 INFO: Analyzing hidden import 'PIL.FliImagePlugin'
+17324 INFO: Analyzing hidden import 'PIL.FpxImagePlugin'
+17330 INFO: Analyzing hidden import 'PIL.FtexImagePlugin'
+17333 INFO: Analyzing hidden import 'PIL.GbrImagePlugin'
+17336 INFO: Analyzing hidden import 'PIL.GdImageFile'
+17338 INFO: Analyzing hidden import 'PIL.GribStubImagePlugin'
+17340 INFO: Analyzing hidden import 'PIL.Hdf5StubImagePlugin'
+17342 INFO: Analyzing hidden import 'PIL.IcnsImagePlugin'
+17375 INFO: Analyzing hidden import 'PIL.IcoImagePlugin'
+17386 INFO: Analyzing hidden import 'PIL.ImImagePlugin'
+17395 INFO: Analyzing hidden import 'PIL.ImageDraw'
+17438 INFO: Analyzing hidden import 'PIL.ImageEnhance'
+17446 INFO: Analyzing hidden import 'PIL.ImageGrab'
+17452 INFO: Analyzing hidden import 'PIL.ImageMorph'
+17460 INFO: Analyzing hidden import 'PIL.ImageTk'
+17465 INFO: Analyzing hidden import 'PIL.ImageTransform'
+17468 INFO: Analyzing hidden import 'PIL.ImtImagePlugin'
+17470 INFO: Analyzing hidden import 'PIL.IptcImagePlugin'
+17476 INFO: Analyzing hidden import 'PIL.McIdasImagePlugin'
+17478 INFO: Analyzing hidden import 'PIL.MicImagePlugin'
+17481 INFO: Analyzing hidden import 'PIL.MpegImagePlugin'
+17483 INFO: Analyzing hidden import 'PIL.MspImagePlugin'
+17488 INFO: Analyzing hidden import 'PIL.PSDraw'
+17492 INFO: Analyzing hidden import 'PIL.PalmImagePlugin'
+17500 INFO: Analyzing hidden import 'PIL.PcdImagePlugin'
+17502 INFO: Analyzing hidden import 'PIL.PcfFontFile'
+17510 INFO: Analyzing hidden import 'PIL.PdfImagePlugin'
+17550 INFO: Analyzing hidden import 'PIL.PixarImagePlugin'
+17552 INFO: Analyzing hidden import 'PIL.PsdImagePlugin'
+17562 INFO: Analyzing hidden import 'PIL.QoiImagePlugin'
+17571 INFO: Analyzing hidden import 'PIL.SgiImagePlugin'
+17576 INFO: Analyzing hidden import 'PIL.SpiderImagePlugin'
+17584 INFO: Processing standard module hook 'hook-PIL.SpiderImagePlugin.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+17585 INFO: Analyzing hidden import 'PIL.SunImagePlugin'
+17588 INFO: Analyzing hidden import 'PIL.TarIO'
+17590 INFO: Analyzing hidden import 'PIL.TgaImagePlugin'
+17597 INFO: Analyzing hidden import 'PIL.WalImageFile'
+17600 INFO: Analyzing hidden import 'PIL.WebPImagePlugin'
+17609 INFO: Analyzing hidden import 'PIL.WmfImagePlugin'
+17614 INFO: Analyzing hidden import 'PIL.XVThumbImagePlugin'
+17616 INFO: Analyzing hidden import 'PIL.XbmImagePlugin'
+17619 INFO: Analyzing hidden import 'PIL.XpmImagePlugin'
+17624 INFO: Analyzing hidden import 'PIL.__main__'
+17625 INFO: Analyzing hidden import 'PIL._tkinter_finder'
+17627 INFO: Analyzing hidden import 'PIL.report'
+17627 INFO: Analyzing hidden import 'lxml.ElementInclude'
+17633 INFO: Analyzing hidden import 'lxml._elementpath'
+17655 INFO: Analyzing hidden import 'lxml.builder'
+17660 INFO: Analyzing hidden import 'lxml.cssselect'
+17663 INFO: Analyzing hidden import 'lxml.doctestcompare'
+17701 INFO: Analyzing hidden import 'lxml.html'
+17747 INFO: Analyzing hidden import 'lxml.html.ElementSoup'
+17757 INFO: Analyzing hidden import 'lxml.html._diffcommand'
+17859 INFO: Analyzing hidden import 'lxml.html._html5builder'
+17863 INFO: Analyzing hidden import 'lxml.html.builder'
+17868 INFO: Analyzing hidden import 'lxml.html.clean'
+17869 INFO: Analyzing hidden import 'lxml.html.formfill'
+17880 INFO: Analyzing hidden import 'lxml.html.html5parser'
+17886 INFO: Analyzing hidden import 'lxml.html.usedoctest'
+17887 INFO: Analyzing hidden import 'lxml.includes'
+17888 INFO: Analyzing hidden import 'lxml.includes.extlibs'
+17889 INFO: Analyzing hidden import 'lxml.includes.libexslt'
+17890 INFO: Analyzing hidden import 'lxml.includes.libxml'
+17890 INFO: Analyzing hidden import 'lxml.includes.libxslt'
+17891 INFO: Analyzing hidden import 'lxml.isoschematron'
+17897 INFO: Processing standard module hook 'hook-lxml.isoschematron.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+17907 INFO: Analyzing hidden import 'lxml.objectify'
+17908 INFO: Analyzing hidden import 'lxml.pyclasslookup'
+17909 INFO: Analyzing hidden import 'lxml.sax'
+17919 INFO: Analyzing hidden import 'lxml.usedoctest'
+17920 INFO: Processing module hooks (post-graph stage)...
+17926 INFO: Processing standard module hook 'hook-lxml.objectify.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks'
+17937 INFO: Processing standard module hook 'hook-_tkinter.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks'
+17951 INFO: Performing binary vs. data reclassification (1156 entries)
+19676 INFO: Looking for ctypes DLLs
+19727 INFO: Analyzing run-time hooks ...
+19731 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+19733 INFO: Including run-time hook 'pyi_rth_pkgutil.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+19735 INFO: Including run-time hook 'pyi_rth_multiprocessing.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+19737 INFO: Including run-time hook 'pyi_rth_pyproj.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\_pyinstaller_hooks_contrib\\rthooks'
+19739 INFO: Including run-time hook 'pyi_rth__tkinter.py' from 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+19773 INFO: Creating base_library.zip...
+19793 INFO: Looking for dynamic libraries
+20340 INFO: Extra DLL search directories (AddDllDirectory): ['C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\numpy.libs', 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\shapely.libs', 'C:\\ProgramData\\anaconda3\\envs\\dgiwg\\Lib\\site-packages\\pyproj.libs']
+20341 INFO: Extra DLL search directories (PATH): []
+21784 INFO: Warnings written to C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\build\DGIWG_Validator\warn-DGIWG_Validator.txt
+21860 INFO: Graph cross-reference written to C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\build\DGIWG_Validator\xref-DGIWG_Validator.html
+21915 INFO: checking PYZ
+21915 INFO: Building PYZ because PYZ-00.toc is non existent
+21915 INFO: Building PYZ (ZlibArchive) C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\build\DGIWG_Validator\PYZ-00.pyz
+22406 INFO: Building PYZ (ZlibArchive) C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\build\DGIWG_Validator\PYZ-00.pyz completed successfully.
+22444 INFO: checking PKG
+22444 INFO: Building PKG because PKG-00.toc is non existent
+22444 INFO: Building PKG (CArchive) DGIWG_Validator_v1_61.pkg
+32485 INFO: Building PKG (CArchive) DGIWG_Validator_v1_61.pkg completed successfully.
+32510 INFO: Bootloader C:\ProgramData\anaconda3\envs\dgiwg\Lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\run.exe
+32510 INFO: checking EXE
+32510 INFO: Building EXE because EXE-00.toc is non existent
+32511 INFO: Building EXE from EXE-00.toc
+32511 INFO: Copying bootloader EXE to C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\dist\DGIWG_Validator_v1_61.exe
+33019 INFO: Copying icon to EXE
+33043 INFO: Copying 0 resources to EXE
+33043 INFO: Embedding manifest in EXE
+33066 INFO: Appending PKG archive to EXE
+33099 INFO: Fixing EXE headers
+33390 INFO: Building EXE from EXE-00.toc completed successfully.
+33414 INFO: Build complete! The results are available in: C:\Users\Son\Documents\DGIWG\DGIWG_GeoPackage_Validator_v1.61\dist
+  OK - dist\DGIWG_Validator_v1_61.exe created. 
+[6/6] Smoke-testing the exe (--version) ... 
+dgiwg_validator 1.61
+  exe size: 45153529 bytes 
