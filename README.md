@@ -1,6 +1,6 @@
 # DGIWG GeoPackage Compliance Validator
 
-**Version:** 1.61 (Release)  
+**Version:** 1.63 (Release)  
 **Standard:** DGIWG STD-DP-19-005 v1.1 (GeoPackage Profile 1.4, Edition 1.1)  
 **License:** GPL-2.0-or-later  
 **Copyright:** © 2026 Eui Soo SON
@@ -39,12 +39,12 @@ Navigate to the project folder and run one of these:
 
 **Single file:**
 ```batch
-python DGIWG_Validator_v1_61.py path\to\file.gpkg
+python DGIWG_Validator_v1_63.py path\to\file.gpkg
 ```
 
 **Folder (all GeoPackages):**
 ```batch
-python DGIWG_Validator_v1_61.py path\to\folder
+python DGIWG_Validator_v1_63.py path\to\folder
 ```
 
 **Module form:**
@@ -58,12 +58,12 @@ python -m dgiwg_validator path\to\file.gpkg
 - **JSON report** — `<filename>_UNKNOWN_DGIWG_Report.json` (machine-readable)
 - **Rollup CSV** — `rollup_DGIWG_Validation.csv` (batch summary)
 
-**Verdict meanings (v1.61):**
+**Verdict meanings (since v1.61):**
 - **CONFORMANT (automated scope)** — no failures, and every check that passed was fully evidenced
 - **CONFORMANT — REDUCED COVERAGE** — no failures, but the tool could not fully verify one or more requirements (a sample, or missing optional data/library)
 - **NON-CONFORMANT** — fails one or more checks
 
-For full documentation, see **QUICKSTART.html** or **DGIWG_GeoPackage_Validator_User_Manual_v1.61.docx**.
+For full documentation, see **QUICKSTART.html** or **DGIWG_GeoPackage_Validator_User_Manual_v1.63.docx**.
 
 ---
 
@@ -93,13 +93,13 @@ If you just want to test without installing dependencies system-wide:
 
 ```batch
 conda activate dgiwg
-cd path\to\DGIWG_GeoPackage_Validator_v1.61
+cd path\to\DGIWG_GeoPackage_Validator_v1.63
 python run_local_tests.py
 ```
 
 Expected output:
 ```
-RESULT: 62/62 assertions passed
+RESULT: 84/84 assertions passed
 ALL TESTS PASSED ✔
 ```
 
@@ -110,7 +110,7 @@ A detailed log file `local_test_log_<timestamp>.txt` is written either way.
 ```batch
 conda activate dgiwg
 pip install shapely Pillow pyproj lxml
-cd path\to\DGIWG_GeoPackage_Validator_v1.61
+cd path\to\DGIWG_GeoPackage_Validator_v1.63
 python run_local_tests.py
 python package_release.py
 ```
@@ -119,7 +119,7 @@ python package_release.py
 
 ### Option C: Build a Standalone .exe (No Python Needed to Run It)
 
-Package the validator into a single `DGIWG_Validator_v1_61.exe` that runs on any Windows PC with no
+Package the validator into a single `DGIWG_Validator_v1_63.exe` that runs on any Windows PC with no
 Python, Anaconda, or pip installs required at run time:
 
 ```batch
@@ -127,7 +127,7 @@ Python, Anaconda, or pip installs required at run time:
 02_build_exe.bat
 ```
 
-Output: `dist\DGIWG_Validator_v1_61.exe`. See **BUILD_EXE_QUICKSTART.html** for the full walkthrough,
+Output: `dist\DGIWG_Validator_v1_63.exe`. See **BUILD_EXE_QUICKSTART.html** for the full walkthrough,
 including drag-and-drop usage, sharing the exe with other machines, and troubleshooting.
 
 ---
@@ -152,10 +152,14 @@ Install all: `pip install shapely Pillow pyproj lxml`
 | File | Purpose |
 |---|---|
 | **QUICKSTART.html** | Single-page quick reference — what the tool does, setup, how to read verdicts, flags, troubleshooting |
-| **DGIWG_GeoPackage_Validator_User_Manual_v1.61.docx** | Comprehensive manual — complete option reference, exit codes, requirements table, limitations, self-test procedure |
-| **RELEASE_NOTES_v1.61.md** | Detailed changelog — behavioral changes, robustness fixes, testing updates |
+| **DGIWG_GeoPackage_Validator_User_Manual_v1.63.docx** | Comprehensive manual — complete option reference, exit codes, requirements table, limitations, self-test procedure |
+| **RELEASE_NOTES_v1.63.md** | Detailed changelog — behavioral changes, robustness fixes, testing updates |
 | **README.md** | This file — overview and quick start |
 | **BUILD_EXE_QUICKSTART.html** | How to build the standalone `.exe` with Anaconda + PyInstaller |
+
+Release notes for earlier versions (v1.60, v1.61) have been moved to `_superseded_pre_v1.63/` to
+keep this folder to the current release only; they are still summarized below and the files
+themselves are preserved there, not deleted.
 
 ---
 
@@ -199,6 +203,35 @@ For more help, see **QUICKSTART.html** troubleshooting table.
 
 ## Release Notes
 
+**v1.63 (2026-09-03) — Consistency & Cleanup Release**
+
+No functional/behavioral changes to the validator itself. This release brings the project folder
+back in sync after v1.62 shipped without its documentation being updated to match:
+
+- The launcher, `__init__.py`, README, QUICKSTART.html, BUILD_EXE_QUICKSTART.html, the build
+  scripts (`01_create_environment.bat`, `02_build_exe.bat`, `DGIWG_Validator.spec`,
+  `environment.yml`) and the User Manual all still referenced **v1.61** (or, in the manual's header/
+  title-page/cover fields, v1.59 and v1.60) even though the package itself (`__init__.__version__`,
+  `VERSION.txt`) had already moved to v1.62. Every current-version reference across these files is
+  now v1.63 and consistent with `dgiwg_validator.__version__`, the single source of truth
+  `package_release.py` reads from.
+- The stray duplicate launcher `DGIWG_Validator_v1_61.py`, the superseded `DGIWG_Validator_v1_62.py`
+  (whose docstring itself still incorrectly said "v1.61" — a leftover copy-paste from when it was
+  created), the superseded manual (`..._v1.62.docx`), and the old per-version `RELEASE_NOTES_v1.60.md`
+  / `RELEASE_NOTES_v1.61.md` files were moved into `_superseded_pre_v1.63/` rather than deleted, so
+  the history is preserved but no longer mixed in with the current release's files.
+- Stale build/test log files (`build_exe_log_*.txt`, `env_setup_log_*.txt`, `local_test_log_*.txt`)
+  from previous local builds were removed — they are regenerated on every run and carried no lasting
+  value.
+- Historical narrative text that documents *when* a feature shipped (e.g. "the PASS* reason chip,
+  added in v1.61" in QUICKSTART.html and the manual's "What's New in v1.61" section) was deliberately
+  **left untouched** — only current-version identity stamps (titles, headers, footers, file-name
+  references, folder paths) were bumped to v1.63, so the changelog history stays accurate.
+
+See **RELEASE_NOTES_v1.63.md** for complete details.
+
+---
+
 **v1.61 (2026-09-02) — Reachable CONFORMANT Verdict**
 
 Fixes the "known limitation" v1.60 documented and shipped anyway: the
@@ -218,7 +251,7 @@ tiles), and Req 13's axis-order check matched `GEOGCRS[` as a substring of
 could not parse the `AXIS[...,north,ORDER[1],...]` form real PROJ/GDAL
 output uses.
 
-See **RELEASE_NOTES_v1.61.md** for complete details.
+See **`_superseded_pre_v1.63/RELEASE_NOTES_v1.61.md`** for complete details.
 
 ---
 
@@ -243,11 +276,11 @@ produce on conformant files:
 - **Forensics Req 18:** the ArcGIS internal-path detector used doubled
   backslashes in raw strings and had never matched anything
 
-Known limitation, unchanged and deliberate: the `CONFORMANT` verdict is still
-unreachable — Req 5, 9, 10, 12, 14, 20, 23, 28, 29 and 33 return `PASS*` even on
-clean data. See RELEASE_NOTES_v1.60.md §5.
+Known limitation, unchanged and deliberate at the time: the `CONFORMANT` verdict was
+still unreachable — Req 5, 9, 10, 12, 14, 20, 23, 28, 29 and 33 returned `PASS*` even on
+clean data. This was fixed in v1.61 (above). See `_superseded_pre_v1.63/RELEASE_NOTES_v1.60.md` §5.
 
-See **RELEASE_NOTES_v1.60.md** for complete details.
+See **`_superseded_pre_v1.63/RELEASE_NOTES_v1.60.md`** for complete details.
 
 ---
 
@@ -261,7 +294,7 @@ Major fixes in this version:
 - **Key-type filtering:** Fragile hardcoded blocklists replaced with type-based selection
 - **Packaging:** Prefix-based directory exclusion prevents stale folders in archives
 
-See **RELEASE_NOTES_v1.59.md** for complete details.
+See **RELEASE_NOTES_v1.59.md** for complete details (not shipped in this folder).
 
 ---
 
@@ -275,7 +308,7 @@ cd path\to\project
 python run_local_tests.py
 ```
 
-This generates test GeoPackages, runs validation, and verifies 62 assertions.
+This generates test GeoPackages, runs validation, and verifies 84 assertions.
 
 ### Build Release Archive
 
@@ -284,8 +317,8 @@ python package_release.py
 ```
 
 Output:
-- `dist\DGIWG_GeoPackage_Validator_v1.61\` — staged folder
-- `dist\DGIWG_GeoPackage_Validator_v1.61.zip` — release archive (~0.18 MB)
+- `dist\DGIWG_GeoPackage_Validator_v1.63\` — staged folder
+- `dist\DGIWG_GeoPackage_Validator_v1.63.zip` — release archive
 
 The manifest check aborts if required assets are missing (launcher, manual, quick-start, etc.).
 
@@ -295,22 +328,27 @@ The manifest check aborts if required assets are missing (launcher, manual, quic
 
 ### Core Package
 - `dgiwg_validator/` — main package (8 Python modules)
-- `DGIWG_Validator_v1_61.py` — launcher script
+- `DGIWG_Validator_v1_63.py` — launcher script
 
 ### Documentation
 - `README.md` — this file
 - `QUICKSTART.html` — quick-start reference
-- `DGIWG_GeoPackage_Validator_User_Manual_v1.61.docx` — full manual
-- `RELEASE_NOTES_v1.61.md` — changelog
+- `DGIWG_GeoPackage_Validator_User_Manual_v1.63.docx` — full manual
+- `RELEASE_NOTES_v1.63.md` — changelog
 
 ### Testing & Building
-- `run_local_tests.py` — 62 regression tests
+- `run_local_tests.py` — 84 regression tests
 - `package_release.py` — release packaging script
 - `environment.yml`, `01_create_environment.bat`, `02_build_exe.bat`, `DGIWG_Validator.spec` — build the standalone `.exe` (see BUILD_EXE_QUICKSTART.html)
 
 ### Data
 - `dgiwg_epsg_cache.json` — embedded EPSG database
 - `VERSION.txt` — version metadata
+
+### Archived (superseded, kept for history — not part of the release zip)
+- `_superseded_pre_v1.63/` — the v1.61 and v1.62 launchers, the v1.62 manual, and the v1.60/v1.61
+  release notes, retired when the project moved to v1.63. `package_release.py` already excludes any
+  folder starting with `_superseded` or `_to_delete` from the release archive by name prefix.
 
 ### Excluded (Maintainer Only)
 - `build_manual.js` — generates User Manual (requires Node.js)
@@ -321,7 +359,7 @@ The manifest check aborts if required assets are missing (launcher, manual, quic
 ## Project Structure
 
 ```
-DGIWG_GeoPackage_Validator_v1.61/
+DGIWG_GeoPackage_Validator_v1.63/
 ├── dgiwg_validator/           # Core validation package
 │   ├── __init__.py            # Version and exports
 │   ├── __main__.py            # Entry point for -m dgiwg_validator
@@ -334,15 +372,16 @@ DGIWG_GeoPackage_Validator_v1.61/
 │   ├── utils.py               # Utilities (library probe, scoring)
 │   ├── forensics.py           # Metadata inspection
 │   └── net.py                 # Network operations (online mode)
-├── DGIWG_Validator_v1_61.py   # Launcher (runs -m dgiwg_validator)
+├── DGIWG_Validator_v1_63.py   # Launcher (runs -m dgiwg_validator)
 ├── VERSION.txt                # Release metadata
 ├── dgiwg_epsg_cache.json      # EPSG codes (offline reference)
 ├── README.md                  # This file
 ├── QUICKSTART.html            # Quick-start guide
-├── DGIWG_GeoPackage_Validator_User_Manual_v1.61.docx  # Full manual
-├── RELEASE_NOTES_v1.61.md     # Changelog
-├── run_local_tests.py         # Test suite (62 assertions)
-└── package_release.py         # Release builder
+├── DGIWG_GeoPackage_Validator_User_Manual_v1.63.docx  # Full manual
+├── RELEASE_NOTES_v1.63.md     # Changelog
+├── run_local_tests.py         # Test suite (84 assertions)
+├── package_release.py         # Release builder
+└── _superseded_pre_v1.63/     # Archived v1.60-v1.62 files (not shipped)
 ```
 
 ---
@@ -371,4 +410,4 @@ For issues, questions, or feedback about this validator, see the troubleshooting
 
 ---
 
-*DGIWG GeoPackage Compliance Validator v1.61*  
+*DGIWG GeoPackage Compliance Validator v1.63*  
